@@ -194,3 +194,270 @@ button {
 		font-size: 1.1rem;
 	}
 }
+
+
+
+
+/* =================================================================== */
+/* =================================================================== */
+/* START: NEW SAAS HOMEPAGE STYLES */
+/* =================================================================== */
+/* =================================================================== */
+
+
+/* =================================================================== */
+/* 1. FOUNDATION & VARIABLES (Ultra Responsive) */
+/* =================================================================== */
+.home {
+  --color-background: #0D0C1D; /* Deep space blue */
+  --color-text: #E0E0E0;
+  --color-headline: #FFFFFF;
+  --color-primary-glow-start: #6A11CB; /* Purple */
+  --color-primary-glow-end: #2575FC;   /* Blue */
+  --color-card-background: rgba(22, 21, 41, 0.5); /* Semi-transparent card */
+  --color-card-border: rgba(255, 255, 255, 0.1);
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Base body styles ONLY for the homepage */
+body.home {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevents horizontal scroll from glows */
+}
+
+/* General container for consistent spacing on the homepage */
+.home .section-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem; /* More padding on mobile */
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.home .section-title {
+  font-size: clamp(2rem, 5vw, 2.5rem); /* Responsive font size */
+  color: var(--color-headline);
+  margin-bottom: 1rem;
+}
+
+
+/* =================================================================== */
+/* 2. HERO SECTION & AURORA GLOW */
+/* =================================================================== */
+.home .hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.home .aurora-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150vw; /* Use viewport units for better coverage */
+  height: 150vh;
+  min-width: 800px;
+  min-height: 800px;
+  background: radial-gradient(circle at center, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.1) 40%, rgba(13, 12, 29, 0) 70%);
+  transform: translate(-50%, -50%);
+  animation: pulse 20s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+}
+
+.home .hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.home .hero-headline {
+  font-size: clamp(2.5rem, 8vw, 4.5rem); /* Ultra responsive title */
+  font-weight: 800;
+  color: var(--color-headline);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.home .hero-subheadline {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0 auto 2.5rem auto;
+  max-width: 600px;
+}
+
+.home .hero-cta-group {
+  display: flex;
+  flex-direction: column; /* Mobile first */
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.home .cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  width: 100%;
+  max-width: 250px; /* Max width on mobile */
+}
+
+.home .primary-glow {
+  background-image: linear-gradient(90deg, var(--color-primary-glow-start), var(--color-primary-glow-end));
+  color: white;
+  box-shadow: 0 0 25px rgba(106, 17, 203, 0.4);
+}
+.home .primary-glow:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 0 40px rgba(37, 117, 252, 0.6);
+}
+
+.home .secondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  border: 1px solid var(--color-card-border);
+}
+.home .secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.home .cta-button.large {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  max-width: 300px;
+}
+
+
+/* =================================================================== */
+/* 3. FEATURED PAGES SECTION (GLASSMORPHISM CARDS) */
+/* =================================================================== */
+.home .featured-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first: one column */
+  gap: 1.5rem;
+}
+
+.home .feature-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-card-background);
+  border: 1px solid var(--color-card-border);
+  padding: 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--color-text);
+  text-align: left;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+}
+
+.home .feature-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(30, 29, 50, 0.7);
+}
+
+.home .feature-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--color-headline);
+}
+
+.home .feature-card p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.home .card-arrow {
+  font-size: 2rem;
+  color: var(--color-primary-glow-end);
+  transition: transform 0.3s ease;
+  padding-left: 1rem;
+}
+
+.home .feature-card:hover .card-arrow {
+  transform: translateX(5px);
+}
+
+
+/* =================================================================== */
+/* 4. SOCIAL PROOF & FINAL CTA SECTIONS */
+/* =================================================================== */
+.home .social-proof-section {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.home .proof-text {
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+.home .logo-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  opacity: 0.6;
+}
+
+.home .final-cta-section p {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+}
+
+
+/* =================================================================== */
+/* 5. RESPONSIVENESS (Mobile to Desktop) */
+/* =================================================================== */
+
+/* For tablets and small desktops */
+@media (min-width: 768px) {
+  .home .hero-cta-group {
+    flex-direction: row; /* Buttons side-by-side */
+  }
+  .home .cta-button {
+    width: auto; /* Buttons take their own width */
+  }
+  .home .featured-grid {
+    /* Two columns on tablets */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* For larger desktops */
+@media (min-width: 1024px) {
+  .home .featured-grid {
+    /* Three columns on large screens */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
