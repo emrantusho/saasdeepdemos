@@ -232,12 +232,23 @@ body.home {
 }
 
 
-/* 2B. HERO SECTION & GENERAL LAYOUT */
-.home header, .home main, .home footer {
-    padding: 0;
+/* 2B. HERO SECTION & GLASSMORPHISM LAYOUT */
+.home header {
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
 }
 .home main {
     max-width: none;
+    padding: 0;
+}
+.home footer {
+    padding: 2rem 1rem;
+    background: rgba(2,0,10,0.5);
+    border-top: 1px solid var(--color-card-border);
 }
 
 .home .hero-section {
@@ -322,12 +333,17 @@ body.home {
 
 .home .section-container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 6rem 2rem;
+  margin: 4rem auto;
+  padding: 4rem 2rem;
   text-align: center;
   position: relative;
   z-index: 2;
-  background-color: rgba(2,0,10,0.5);
+  background: rgba(20, 22, 40, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur( 15px );
+  -webkit-backdrop-filter: blur( 15px );
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .home .section-title {
@@ -417,11 +433,7 @@ body.home {
 }
 
 
-/* 2D. SOCIAL PROOF & FINAL CTA SECTIONS */
-.home .social-proof-section {
-  border-top: 1px solid var(--color-card-border);
-  border-bottom: 1px solid var(--color-card-border);
-}
+/* 2D. SOCIAL PROOF SECTION */
 .home .proof-text {
   margin-bottom: 3rem;
   text-transform: uppercase;
@@ -438,11 +450,6 @@ body.home {
   gap: 4rem;
   opacity: 0.7;
   filter: grayscale(100%) brightness(150%);
-}
-.home .final-cta-section p {
-  max-width: 600px;
-  margin: 0 auto 2.5rem auto;
-  font-size: 1.2rem;
 }
 
 
@@ -530,4 +537,4 @@ body.bg-blue-cluster {
   --color-headline: #fff;
   --color-primary: #e8f0f8;
 }
-body.bg-blue-cluster header > em a { color: #fff; }
+body.bg-blue-cluster header > em a { color: #fff; }```
