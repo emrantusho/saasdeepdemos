@@ -1,19 +1,210 @@
 /* =================================================================== */
+/* PART 1: ORIGINAL BLOG STYLES (MODIFIED) */
+/* These styles will ONLY apply to pages that are NOT the homepage. */
 /* =================================================================== */
-/* START: NEW COSMIC SAAS HOMEPAGE STYLES V2 (Consolidated) */
+:root {
+	--primary: blue;
+	--secondary: white;
+	--background: #FFF0EB;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html,
+body:not(.home) { /* MODIFIED */
+	padding: 0;
+	margin: 0;
+	font-family: "Avenir", "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+body:not(.home) { /* MODIFIED */
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto 1fr auto;
+	background-color: var(--background);
+}
+
+body:not(.home) main { /* MODIFIED */
+	max-width: 37.5em;
+}
+
+p,
+pre,
+code {
+	line-height: 1.5;
+}
+
+a[href],
+a[href]:visited {
+	color: var(--primary);
+}
+
+a[href]:not(:hover) {
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+body:not(.home) header,
+body:not(.home) main,
+body:not(.home) footer { /* MODIFIED */
+	padding: 1em;
+}
+
+body:not(.home) main { /* MODIFIED */
+	padding-bottom: 2em;
+}
+
+main :first-child,
+main > article :first-child {
+	margin-top: 0;
+}
+
+pre {
+	font-size: 14px;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	-moz-tab-size: 2;
+	tab-size: 2;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	padding: 1em;
+	margin: .5em 0;
+}
+
+/* Header Logo (style as h2) */
+header > em {
+	display: block;
+	font-size: 2em;
+	margin: .67em 0;
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* Header Nav - The old nav is mostly unused, but kept for safety */
+header nav ul {
+	padding: 0;
+	list-style: none;
+}
+header nav ul :first-child {
+	margin-left: 0;
+}
+header nav li {
+	display: inline-block;
+	margin: 0 .25em;
+}
+header nav li a {
+	padding: .25em .5em;
+	border-radius: .25em;
+}
+header nav li a[href]:not(:hover) {
+	text-decoration: none;
+}
+header nav li a[data-current="current item"] {
+	background-color: white;
+}
+
+/* Posts List */
+article {
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid var(--secondary);
+}
+
+main > section > article > * {
+	margin-top: 0;
+	margin-bottom: .5em;
+}
+
+/* Post Tags */
+a[rel="tag"],
+a[rel="tag"]:visited {
+	display: inline-block;
+  vertical-align: text-top;
+  text-transform: uppercase;
+	letter-spacing: .1em;
+  font-size: .625em;
+  padding: 0 .5em;
+	line-height: 2em;
+	height: 2em;
+  border: 1px solid var(--secondary);
+	background-color: var(--secondary);
+	color: var(--primary);
+  border-radius: .25em;
+  text-decoration: none;
+	margin: 0 .5em .5em 0;
+}
+a[rel="tag"]:hover {
+	border: 1px solid var(--primary);
+	background-color: var(--primary);
+	color: var(--secondary);
+}
+a[rel="tag"]:last-child {
+	margin-right: 0;
+}
+
+/* Contact Form */
+form {
+  display: grid;
+	padding: 2em 0;
+}
+form label {
+  display: none;
+}
+input,
+textarea,
+button {
+  width: 100%;
+  padding: 1em;
+  margin-bottom: 1em;
+	font-size: 1rem;
+	font-family: "Avenir", "Avenir Next", sans-serif;
+}
+input,
+textarea {
+	border: 1px solid black;
+}
+button {
+	border: 1px solid var(--primary);
+	background-color: var(--primary);
+	color: var(--secondary);
+	cursor: pointer;
+}
+
+@media screen and (min-width:768px) {
+	body:not(.home) { /* MODIFIED */
+		font-size: 1.1rem;
+	}
+}
+
+
+/* =================================================================== */
+/* =================================================================== */
+/* PART 2: NEW COSMIC & PROFESSIONAL STYLES */
 /* =================================================================== */
 /* =================================================================== */
 
 
 /* =================================================================== */
-/* 1. DEEP SPACE FOUNDATION & ANIMATED STARFIELD */
+/* 2A. HOMEPAGE & CANVAS STYLES */
 /* =================================================================== */
 .home {
   --color-background-deep-space: #02000a;
-  --color-text: #b0c4ff; /* Softer, nebula-like text color */
+  --color-text: #b0c4ff;
   --color-headline: #FFFFFF;
-  --color-nebula-start: #7B2ABF; /* Deep Purple */
-  --color-nebula-end: #1F78B4;   /* Cosmic Blue */
+  --color-nebula-start: #7B2ABF;
+  --color-nebula-end: #1F78B4;
   --color-card-border: rgba(176, 196, 255, 0.2);
   --color-card-background: rgba(15, 17, 32, 0.6);
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -21,31 +212,25 @@
 
 /* Base body styles for the new theme */
 body.home {
-  /* NEW: Animated Starfield Background */
-  background-color: var(--color-background-deep-space);
-  background-image:
-    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-  animation: move-stars 200s linear infinite;
-
   color: var(--color-text);
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-@keyframes move-stars {
-  from {background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;}
-  to {background-position: -10000px 5000px, -10000px 5000px, -10000px 5000px, -10000px 5000px;}
+/* Canvas for the JS animation */
+#solar-system-canvas {
+  position: fixed; /* Fixed position stays in place on scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind everything */
 }
 
 
 /* =================================================================== */
-/* 2. HERO SECTION & NEBULA GLOW (Desktop First) */
+/* 2B. HERO SECTION & GENERAL LAYOUT */
 /* =================================================================== */
 .home .hero-section {
   position: relative;
@@ -56,25 +241,6 @@ body.home {
   padding: 2rem 1.5rem;
   text-align: center;
   overflow: hidden;
-}
-
-.home .aurora-glow { /* Renamed to Nebula Glow */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120vw;
-  height: 120vh;
-  min-width: 1000px;
-  min-height: 1000px;
-  background: radial-gradient(circle at center, var(--color-nebula-start), rgba(31, 120, 180, 0.3) 30%, rgba(2, 0, 10, 0) 65%);
-  transform: translate(-50%, -50%);
-  animation: spin-nebula 60s infinite linear;
-  z-index: 0;
-}
-
-@keyframes spin-nebula {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .home .hero-content {
@@ -146,17 +312,14 @@ body.home {
   max-width: 300px;
 }
 
-
-/* =================================================================== */
-/* 3. GENERAL LAYOUT & DESKTOP-FRIENDLY REFINEMENTS */
-/* =================================================================== */
 .home .section-container {
-  max-width: 1200px; /* Wider container for desktop */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 6rem 2rem;
   text-align: center;
   position: relative;
   z-index: 2;
+  background-color: rgba(2,0,10,0.5); /* Semi-transparent background for sections */
 }
 
 .home .section-title {
@@ -168,18 +331,18 @@ body.home {
 
 
 /* =================================================================== */
-/* 4. FEATURED PAGES SECTION (COSMIC CARDS) */
+/* 2C. FEATURED PAGES SECTION (COSMIC CARDS) */
 /* =================================================================== */
 .home .featured-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Mobile first: one column */
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
 .home .feature-card {
-  position: relative; /* For the animated border */
+  position: relative;
   display: flex;
-  flex-direction: column; /* Better for varying content lengths */
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   background: var(--color-card-background);
@@ -193,10 +356,8 @@ body.home {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   min-height: 200px;
-  overflow: hidden; /* Important for the border effect */
+  overflow: hidden;
 }
-
-/* The animated glowing border */
 .home .feature-card::before {
   content: "";
   position: absolute;
@@ -207,45 +368,37 @@ body.home {
   opacity: 0;
   animation: spin-border 6s infinite linear;
 }
-
 .home .feature-card:hover::before {
   opacity: 1;
 }
-
-/* The content must be in a separate container above the border */
 .home .card-content {
   position: relative;
   z-index: 2;
-  background: var(--color-card-background); /* Match card for solid look */
-  width: calc(100% + 5rem); /* Overlap to hide border edges */
+  background: var(--color-card-background);
+  width: calc(100% + 5rem);
   height: calc(100% + 5rem);
-  margin: -2.5rem; /* Pull back into place */
-  padding: 2.5rem; /* Restore original padding */
-  border-radius: 11px; /* Slightly smaller to see the glow */
+  margin: -2.5rem;
+  padding: 2.5rem;
+  border-radius: 11px;
 }
-
-.home .feature-card:hover .card-content {
-  background: rgba(2, 0, 10, 0.8); /* Darken content slightly on hover */
+.home .feature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(191, 200, 226, 0.4);
 }
-
 @keyframes spin-border {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
 .home .feature-card h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.3rem;
   color: var(--color-headline);
 }
-
 .home .feature-card p {
   margin: 0;
   line-height: 1.6;
-  flex-grow: 1; /* Allows footer to stick to bottom */
+  flex-grow: 1;
 }
-
-/* New card footer for a cleaner look */
 .home .card-footer {
   margin-top: 1.5rem;
   font-weight: 600;
@@ -253,21 +406,18 @@ body.home {
   align-self: flex-end;
   transition: all 0.3s ease;
 }
-
 .home .feature-card:hover .card-footer {
   color: var(--color-headline);
 }
 
 
 /* =================================================================== */
-/* 5. SOCIAL PROOF & FINAL CTA SECTIONS */
+/* 2D. SOCIAL PROOF & FINAL CTA SECTIONS */
 /* =================================================================== */
 .home .social-proof-section {
-  background-color: rgba(0,0,0,0.2);
   border-top: 1px solid var(--color-card-border);
   border-bottom: 1px solid var(--color-card-border);
 }
-
 .home .proof-text {
   margin-bottom: 3rem;
   text-transform: uppercase;
@@ -276,7 +426,6 @@ body.home {
   color: var(--color-text);
   opacity: 0.8;
 }
-
 .home .logo-wall {
   display: flex;
   flex-wrap: wrap;
@@ -286,7 +435,6 @@ body.home {
   opacity: 0.7;
   filter: grayscale(100%) brightness(150%);
 }
-
 .home .final-cta-section p {
   max-width: 600px;
   margin: 0 auto 2.5rem auto;
@@ -295,10 +443,8 @@ body.home {
 
 
 /* =================================================================== */
-/* 6. RESPONSIVENESS (Mobile to Desktop) */
+/* 2E. RESPONSIVENESS (Mobile to Desktop) */
 /* =================================================================== */
-
-/* For tablets and small desktops */
 @media (min-width: 768px) {
   .home .hero-cta-group {
     flex-direction: row;
@@ -307,22 +453,18 @@ body.home {
     width: auto;
   }
   .home .featured-grid {
-    /* Two columns on tablets */
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* For larger desktops */
 @media (min-width: 1024px) {
   .home .featured-grid {
-    /* Three columns on large screens for a more expansive feel */
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 
 /* =================================================================== */
-/* 7. PROFESSIONAL NAVIGATION STYLES (for both homepage and other pages) */
+/* 2F. PROFESSIONAL NAVIGATION STYLES */
 /* =================================================================== */
 .main-nav {
   width: 100%;
@@ -337,7 +479,7 @@ body.home {
   gap: 1rem;
 }
 .nav-item a {
-  color: var(--color-text); /* Use the --color-text variable from the relevant body */
+  color: var(--color-text, #333);
   text-decoration: none;
   font-weight: 600;
   padding: 0.5rem 1rem;
@@ -353,7 +495,7 @@ body.home {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background-color: var(--color-nebula-end, #00C2FF); /* Fallback for non-home pages */
+  background-color: var(--color-nebula-end, var(--primary));
   transition: width 0.3s ease;
 }
 .nav-item a:hover::after,
@@ -361,33 +503,24 @@ body.home {
   width: 80%;
 }
 .nav-item a[data-current="current-item"] {
-  color: var(--color-headline, #FFFFFF); /* Fallback for non-home pages */
+  color: var(--color-headline, var(--primary));
 }
 
 
 /* =================================================================== */
-/* 8. UNIQUE PAGE BACKGROUND STYLES (for other pages) */
+/* 2G. UNIQUE PAGE BACKGROUND STYLES */
 /* =================================================================== */
-
-/* Default styles for all non-homepage, non-cosmic pages */
-body:not(.home):not([class*="bg-"]) {
-  background: #f0f2f5; /* A clean, light grey for default pages */
-  color: #333;
-}
-
 /* Style for the "Red Nebula" pages */
 body.bg-red-nebula {
   background-color: #1a0a1a;
   background-image: radial-gradient(circle at 10% 20%, rgba(255, 100, 150, 0.3), transparent 50%),
                     radial-gradient(circle at 80% 90%, rgba(200, 100, 255, 0.25), transparent 60%);
   color: #f0e8f8;
-  /* Adjust header/footer for dark background */
   --color-text: #f0e8f8;
   --color-headline: #fff;
-  --color-primary: #f0e8f8; /* For links */
+  --color-primary: #f0e8f8;
 }
 body.bg-red-nebula header > em a { color: #fff; }
-
 
 /* Style for the "Blue Cluster" pages */
 body.bg-blue-cluster {
@@ -395,9 +528,8 @@ body.bg-blue-cluster {
   background-image: radial-gradient(circle at 90% 15%, rgba(100, 150, 255, 0.3), transparent 40%),
                     radial-gradient(circle at 20% 80%, rgba(100, 200, 255, 0.25), transparent 50%);
   color: #e8f0f8;
-  /* Adjust header/footer for dark background */
   --color-text: #e8f0f8;
   --color-headline: #fff;
-  --color-primary: #e8f0f8; /* For links */
+  --color-primary: #e8f0f8;
 }
 body.bg-blue-cluster header > em a { color: #fff; }
