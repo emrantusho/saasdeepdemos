@@ -1,59 +1,9 @@
-# ===================================================================
-# Backend Configuration
-# ===================================================================
-backend:
-  name: git-gateway
-  # CRITICAL: Make sure this matches your GitHub repository's
-  # default branch name ('main' or 'master').
-  branch: master
-
-# ===================================================================
-# Media Folder Configuration
-# This is corrected to match YOUR project's structure.
-# ===================================================================
-media_folder: "static/img"
-public_folder: "/img"
-
-# ===================================================================
-# Collections Configuration
-# This defines your content types and is fully corrected.
-# ===================================================================
-collections:
-  # Collection for Blog Posts
-  - name: "blog"
-    label: "Posts"
-    folder: "posts"
+  - name: "demos"
+    label: "Demos"
+    folder: "demos" # We'll save these in a new "demos" folder
     create: true
-    # Using a dated slug is best practice for blog posts
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string", default: "Anonymous" }
-      - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
-      # This hidden field tells posts to use the correct layout for styling
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  # Collection for Static Pages (e.g., About, Contact)
-  - name: "pages"
-    label: "Pages"
-    folder: "pages"
-    # This is now TRUE so you can create new pages
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Permalink", name: "permalink", widget: "string", hint: "The final URL for the page. E.g., /about/" }
-      - label: "Navigation" # For 11ty Navigation Plugin
-        name: "eleventyNavigation"
-        widget: "object"
-        fields:
-          - { label: "Key", name: "key", widget: "string" }
-          - { label: "Order", name: "order", widget: "number", default: 0 }
-      # This hidden field tells pages to use the correct layout for styling
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk" }
-      # The duplicate "body" field has been removed
-      - { label: "Body", name: "body", widget: "markdown" }
+      - {label: "Title", name: "title", widget: "string", hint: "The name of your project or demo."}
+      - {label: "Script URL", name: "scriptUrl", widget: "string", hint: "The full URL to the demo you want to embed."}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/demo.njk"}
+      - {label: "Tags", name: "tags", widget: "hidden", default: ["demo"]}
