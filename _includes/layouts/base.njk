@@ -1,12 +1,10 @@
 <!doctype html>
 <html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
 
-	{# This includes the head.njk component we just configured. #}
+	{# This includes the head.njk component we will configure next. #}
 	{% include "components/head.njk" %}
 
-	{# This body tag is now upgraded. It includes the "section" class (e.g., "home") #}
-	{# AND the "pageClass" (e.g., "bg-red-nebula") if you've defined one in a page's front matter. #}
-	{# This is the key that allows for different backgrounds on different pages. #}
+	{# This is the final, upgraded body tag. #}
 	<body class="{% if section %}{{ section }}{% endif %} {% if pageClass %}{{ pageClass }}{% endif %}">
 
 		<header>
@@ -16,9 +14,15 @@
 			{% include "components/nav.njk" %}
 		</header>
 
+		{# On the homepage, the <main> tag is now inside home.njk for better control. #}
+		{# On all other pages, the <main> tag is here. #}
+		{% if section != "home" %}
 		<main>
 			{{ content | safe }}
 		</main>
+		{% else %}
+			{{ content | safe }}
+		{% endif %}
 
 		{% include "components/footer.njk" %}
 
