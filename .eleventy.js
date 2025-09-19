@@ -97,8 +97,6 @@ eleventyConfig.addCollection("demo", function(collectionApi) {
   eleventyConfig.addPassthroughCopy("_includes/assets/css/inline.css");
   
   // *** THIS IS THE NEW AND IMPORTANT LINE ***
-  // It copies the entire JS folder to the final site, making solar-system.js available.
-  eleventyConfig.addPassthroughCopy("_includes/assets/js/");
 
 
   /* Markdown Plugins */
