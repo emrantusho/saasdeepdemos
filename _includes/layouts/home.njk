@@ -1,6 +1,9 @@
 ---
 layout: layouts/base.njk
 section: home
+eleventyNavigation:
+  key: Home
+  order: 1
 ---
 {# This canvas element is the stage for our solar system animation. #}
 {# It's placed at the top so it sits behind all other content. #}
@@ -10,7 +13,6 @@ section: home
 {# HERO SECTION - The first thing visitors see. #}
 {# =================================================================== #}
 <section class="hero-section">
-  <div class="aurora-glow"></div> {# This is the nebula glow effect #}
   <div class="hero-content">
     <h1 class="hero-headline">The Future of [Your Product] is Here</h1>
     <p class="hero-subheadline">Experience unparalleled performance and next-generation features, built on a decentralized, secure, and blazingly fast architecture.</p>
