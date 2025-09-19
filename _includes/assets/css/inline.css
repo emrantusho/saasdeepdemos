@@ -1,6 +1,8 @@
 /* =================================================================== */
-/* PART 1: ORIGINAL BLOG STYLES (MODIFIED) */
-/* These styles will ONLY apply to pages that are NOT the homepage. */
+/* =================================================================== */
+/* PART 1: ORIGINAL DEFAULT THEME STYLES */
+/* This is the known good, working base for your site. */
+/* =================================================================== */
 /* =================================================================== */
 :root {
 	--primary: blue;
@@ -13,20 +15,20 @@
 }
 
 html,
-body:not(.home) { /* MODIFIED */
+body {
 	padding: 0;
 	margin: 0;
 	font-family: "Avenir", "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-body:not(.home) { /* MODIFIED */
+body {
 	display: grid;
 	height: 100vh;
 	grid-template-rows: auto 1fr auto;
 	background-color: var(--background);
 }
 
-body:not(.home) main { /* MODIFIED */
+main {
 	max-width: 37.5em;
 }
 
@@ -50,13 +52,13 @@ img {
 	height: auto;
 }
 
-body:not(.home) header,
-body:not(.home) main,
-body:not(.home) footer { /* MODIFIED */
+header,
+main,
+footer {
 	padding: 1em;
 }
 
-body:not(.home) main { /* MODIFIED */
+main {
 	padding-bottom: 2em;
 }
 
@@ -91,25 +93,30 @@ header > em {
 	font-style: normal;
 }
 
-/* Header Nav - The old nav is mostly unused, but kept for safety */
+/* Header Nav */
 header nav ul {
 	padding: 0;
 	list-style: none;
 }
+
 header nav ul :first-child {
 	margin-left: 0;
 }
+
 header nav li {
 	display: inline-block;
 	margin: 0 .25em;
 }
+
 header nav li a {
 	padding: .25em .5em;
 	border-radius: .25em;
 }
+
 header nav li a[href]:not(:hover) {
 	text-decoration: none;
 }
+
 header nav li a[data-current="current item"] {
 	background-color: white;
 }
@@ -145,11 +152,13 @@ a[rel="tag"]:visited {
   text-decoration: none;
 	margin: 0 .5em .5em 0;
 }
+
 a[rel="tag"]:hover {
 	border: 1px solid var(--primary);
 	background-color: var(--primary);
 	color: var(--secondary);
 }
+
 a[rel="tag"]:last-child {
 	margin-right: 0;
 }
@@ -159,9 +168,11 @@ form {
   display: grid;
 	padding: 2em 0;
 }
+
 form label {
   display: none;
 }
+
 input,
 textarea,
 button {
@@ -171,10 +182,12 @@ button {
 	font-size: 1rem;
 	font-family: "Avenir", "Avenir Next", sans-serif;
 }
+
 input,
 textarea {
 	border: 1px solid black;
 }
+
 button {
 	border: 1px solid var(--primary);
 	background-color: var(--primary);
@@ -183,15 +196,17 @@ button {
 }
 
 @media screen and (min-width:768px) {
-	body:not(.home) { /* MODIFIED */
+	:root {
 		font-size: 1.1rem;
 	}
 }
 
 
+
 /* =================================================================== */
 /* =================================================================== */
-/* PART 2: NEW COSMIC & PROFESSIONAL STYLES */
+/* PART 2: NEW COSMIC & PROFESSIONAL STYLES (MODIFICATIONS) */
+/* This part overrides and adds to the styles above. */
 /* =================================================================== */
 /* =================================================================== */
 
@@ -210,8 +225,11 @@ button {
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Base body styles for the new theme */
+/* Override original body styles ONLY for the homepage */
 body.home {
+  display: block; /* Override the grid layout */
+  height: auto; /* Override fixed height */
+  background-color: var(--color-background-deep-space) !important; /* Force override with !important */
   color: var(--color-text);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -220,18 +238,25 @@ body.home {
 
 /* Canvas for the JS animation */
 #solar-system-canvas {
-  position: fixed; /* Fixed position stays in place on scroll */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Behind everything */
+  z-index: -1;
 }
 
 
 /* =================================================================== */
 /* 2B. HERO SECTION & GENERAL LAYOUT */
 /* =================================================================== */
+.home header, .home main, .home footer {
+    padding: 0; /* Remove default padding on homepage sections */
+}
+.home main {
+    max-width: none; /* Allow homepage content to be full-width */
+}
+
 .home .hero-section {
   position: relative;
   display: flex;
@@ -319,7 +344,7 @@ body.home {
   text-align: center;
   position: relative;
   z-index: 2;
-  background-color: rgba(2,0,10,0.5); /* Semi-transparent background for sections */
+  background-color: rgba(2,0,10,0.5);
 }
 
 .home .section-title {
@@ -466,6 +491,10 @@ body.home {
 /* =================================================================== */
 /* 2F. PROFESSIONAL NAVIGATION STYLES */
 /* =================================================================== */
+/* This overrides the old nav styles completely */
+header nav {
+    display: block !important;
+}
 .main-nav {
   width: 100%;
 }
@@ -512,6 +541,7 @@ body.home {
 /* =================================================================== */
 /* Style for the "Red Nebula" pages */
 body.bg-red-nebula {
+  display: block; /* Override grid */
   background-color: #1a0a1a;
   background-image: radial-gradient(circle at 10% 20%, rgba(255, 100, 150, 0.3), transparent 50%),
                     radial-gradient(circle at 80% 90%, rgba(200, 100, 255, 0.25), transparent 60%);
@@ -524,6 +554,7 @@ body.bg-red-nebula header > em a { color: #fff; }
 
 /* Style for the "Blue Cluster" pages */
 body.bg-blue-cluster {
+  display: block; /* Override grid */
   background-color: #0a0a1a;
   background-image: radial-gradient(circle at 90% 15%, rgba(100, 150, 255, 0.3), transparent 40%),
                     radial-gradient(circle at 20% 80%, rgba(100, 200, 255, 0.25), transparent 50%);
