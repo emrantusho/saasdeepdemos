@@ -1,43 +1,17 @@
-# ===================================================================
-# Backend Configuration (Required)
-# Connects to your GitHub repository.
-# ===================================================================
 backend:
   name: git-gateway
-  # IMPORTANT: Double-check that this matches your repository's default branch.
-  # Change to "master" if that is what your repository uses.
   branch: main
 
-# ===================================================================
-# Media and Publishing Configuration (Required by the CMS)
-# This tells the CMS how to handle image uploads.
-# ===================================================================
-media_folder: "static/img/uploads" # Tells the CMS where to save images.
-public_folder: "/img/uploads"      # Tells the CMS how to display them.
+media_folder: "static/img/uploads"
+public_folder: "/img/uploads"
 
-# This new section is required to fix the error.
-media_library:
-  name: uploadcare
-  config:
-    publicKey: demopublickey # Replace with your own key for a real site.
-
-# ===================================================================
-# Collections Configuration (Required)
-# This defines your content types.
-# ===================================================================
 collections:
-  # The only collection you need for your demo portfolio.
   - name: "demos"
     label: "Demos"
-    label_singular: "Demo"
-    folder: "demos" # Saves new demos in a root folder named "demos".
+    folder: "demos"
     create: true
-    slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string", hint: "The name of your project or demo (e.g., My Awesome App)."}
-      - {label: "Script URL", name: "scriptUrl", widget: "string", hint: "The full URL to the live demo you want to embed (e.g., https://my-app.netlify.app/)."}
-      - {label: "Summary", name: "summary", widget: "text", required: false, hint: "(Optional) A short, one-sentence description of the project."}
-      
-      # These fields are hidden. They automatically add the necessary data.
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Script URL", name: "scriptUrl", widget: "string"}
       - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/demo.njk"}
       - {label: "Tags", name: "tags", widget: "hidden", default: ["demo"]}
