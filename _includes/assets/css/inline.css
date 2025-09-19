@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 /* =================================================================== */
 /* 9. MINIMALIST HEADER & CENTERED LOGO */
 /* =================================================================== */
@@ -54,4 +62,40 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+
+
+
+/* =================================================================== */
+/* 2A. UNIVERSAL COSMIC & GLASSMORPHISM STYLES */
+/* =================================================================== */
+body {
+  --color-background-deep-space: #02000a;
+  --color-text: #b0c4ff;
+  --color-headline: #FFFFFF;
+  --color-nebula-start: #7B2ABF;
+  --color-nebula-end: #1F78B4;
+  --color-card-border: rgba(176, 196, 255, 0.2);
+  --color-card-background: rgba(15, 17, 32, 0.6);
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Universal Animated Starfield Background */
+  background-color: var(--color-background-deep-space);
+  background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+  background-size: 550px 550px, 350px 350px;
+  background-position: 0 0, 40px 60px;
+  animation: move-stars 200s linear infinite;
+
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+@keyframes move-stars {
+  from {background-position: 0 0, 40px 60px;}
+  to {background-position: -10000px 5000px, -10000px 5000px;}
 }
