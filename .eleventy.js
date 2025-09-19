@@ -75,12 +75,20 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
+  // =================================================================
+  // Passthrough File Copy >> THIS SECTION IS UPDATED <<
+  // =================================================================
   // Don't process folders with static assets e.g. images
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("static/img");
   eleventyConfig.addPassthroughCopy("admin/");
   // We additionally output a copy of our CSS for use in Decap CMS previews
   eleventyConfig.addPassthroughCopy("_includes/assets/css/inline.css");
+  
+  // *** THIS IS THE NEW AND IMPORTANT LINE ***
+  // It copies the entire JS folder to the final site, making solar-system.js available.
+  eleventyConfig.addPassthroughCopy("_includes/assets/js/");
+
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
