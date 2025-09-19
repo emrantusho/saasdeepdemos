@@ -3,4 +3,68 @@ layout: layouts/base.njk
 section: home
 ---
 
-{{ content | safe }}
+{# =================================================================== #}
+{# HERO SECTION - The first thing visitors see. #}
+{# =================================================================== #}
+<section class="hero-section">
+  <div class="aurora-glow"></div>
+  <div class="hero-content">
+    <h1 class="hero-headline">The Future of [Your Product] is Here</h1>
+    <p class="hero-subheadline">Experience unparalleled performance and next-generation features, built on a decentralized, secure, and blazingly fast architecture.</p>
+    <div class="hero-cta-group">
+      <a href="/signup" class="cta-button primary-glow">Get Started for Free</a>
+      <a href="/docs" class="cta-button secondary">Read the Docs</a>
+    </div>
+  </div>
+</section>
+
+{# =================================================================== #}
+{# FEATURED PAGES SECTION - This is where your automatic pages will show up! #}
+{# =================================================================== #}
+<section class="featured-pages-section">
+  <div class="section-container">
+    <h2 class="section-title">Explore Our Platform</h2>
+    <div class="featured-grid">
+      {%- for page in collections.all %}
+        {%- if page.data.featured == true %}
+          <a href="{{ page.url }}" class="feature-card">
+            <div class="card-content">
+              <h3>{{ page.data.title }}</h3>
+              {%- if page.data.summary %}
+                <p>{{ page.data.summary }}</p>
+              {% endif %}
+            </div>
+            <div class="card-arrow">&rarr;</div>
+          </a>
+        {%- endif %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{# =================================================================== #}
+{# SOCIAL PROOF / LOGO WALL #}
+{# =================================================================== #}
+<section class="social-proof-section">
+  <div class="section-container">
+    <p class="proof-text">Trusted by innovative teams at the forefront of Web3</p>
+    <div class="logo-wall">
+      <!-- Replace with your actual logos or remove if not needed -->
+      <p>LOGO 1</p>
+      <p>LOGO 2</p>
+      <p>LOGO 3</p>
+      <p>LOGO 4</p>
+    </div>
+  </div>
+</section>
+
+{# =================================================================== #}
+{# FINAL CALL TO ACTION #}
+{# =================================================================== #}
+<section class="final-cta-section">
+  <div class="section-container">
+    <h2 class="section-title">Ready to Build the Future?</h2>
+    <p>Join thousands of developers and innovators. No credit card required.</p>
+    <a href="/signup" class="cta-button primary-glow large">Create Your Account</a>
+  </div>
+</section>
