@@ -1,31 +1,6 @@
-<!doctype html>
-<html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
-
-	{# This includes the head.njk component we will configure next. #}
-	{% include "components/head.njk" %}
-
-	{# This is the final, upgraded body tag. #}
-	<body class="{% if section %}{{ section }}{% endif %} {% if pageClass %}{{ pageClass }}{% endif %}">
-
-		<header>
-			<em>
-				<a href="{{ '/' | url }}">{{ metadata.title }}</a>
-			</em>
-			{% include "components/nav.njk" %}
-		</header>
-
-		{# On the homepage, the <main> tag is now inside home.njk for better control. #}
-		{# On all other pages, the <main> tag is here. #}
-		{% if section != "home" %}
-		<main>
-			{{ content | safe }}
-		</main>
-		{% else %}
-			{{ content | safe }}
-		{% endif %}
-
-		{% include "components/footer.njk" %}
-
-	</body>
-
-</html>
+<header>
+  <em>
+    <a href="{{ '/' | url }}">{{ metadata.title }}</a>
+  </em>
+  {% include "components/nav.njk" %}
+</header>
