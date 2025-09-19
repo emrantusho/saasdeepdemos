@@ -1,9 +1,38 @@
+# ===================================================================
+# Backend Configuration
+# This tells the CMS how to connect to your GitHub repository.
+# ===================================================================
+backend:
+  name: git-gateway
+  # IMPORTANT: Make sure this matches your repository's default branch.
+  # It is almost always "main" or "master".
+  branch: main
+
+# ===================================================================
+# Media Folder Configuration
+# This tells the CMS where to save any images you upload.
+# ===================================================================
+media_folder: "static/img" # Or "public/img", check your project structure.
+public_folder: "/img"
+
+# ===================================================================
+# Collections Configuration
+# This defines the content types for your site. We only need one: "Demos".
+# ===================================================================
+collections:
+  # This is the only collection you need for your demo portfolio.
   - name: "demos"
     label: "Demos"
-    folder: "demos" # We'll save these in a new "demos" folder
+    label_singular: "Demo"
+    folder: "demos" # This will save each new demo in a folder named "demos".
     create: true
+    slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string", hint: "The name of your project or demo."}
-      - {label: "Script URL", name: "scriptUrl", widget: "string", hint: "The full URL to the demo you want to embed."}
+      - {label: "Title", name: "title", widget: "string", hint: "The name of your project or demo (e.g., My Awesome App)."}
+      - {label: "Script URL", name: "scriptUrl", widget: "string", hint: "The full URL to the live demo you want to embed (e.g., https://my-app.netlify.app/)."}
+      - {label: "Summary", name: "summary", widget: "text", required: false, hint: "(Optional) A short, one-sentence description of the project."}
+      
+      # These fields are hidden. They automatically add the necessary data
+      # to each file without you needing to do anything.
       - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/demo.njk"}
       - {label: "Tags", name: "tags", widget: "hidden", default: ["demo"]}
