@@ -13,7 +13,6 @@
 
   {# This block checks if the current page is the homepage. #}
   {# If it is, it includes and minifies the solar system JavaScript. #}
-  {# This ensures the animation script only loads on the page where it's needed. #}
   {% if section == "home" %}
     {% set js %}
       {% include "assets/js/solar-system.js" %}
