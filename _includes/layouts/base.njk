@@ -1,10 +1,12 @@
 <!doctype html>
 <html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
 
+	{# This includes the head.njk component we just configured. #}
 	{% include "components/head.njk" %}
 
 	{# This body tag is now upgraded. It includes the "section" class (e.g., "home") #}
-	{# AND the "pageClass" (e.g., "bg-red-nebula") if you've defined one in your page's front matter. #}
+	{# AND the "pageClass" (e.g., "bg-red-nebula") if you've defined one in a page's front matter. #}
+	{# This is the key that allows for different backgrounds on different pages. #}
 	<body class="{% if section %}{{ section }}{% endif %} {% if pageClass %}{{ pageClass }}{% endif %}">
 
 		<header>
@@ -19,11 +21,6 @@
 		</main>
 
 		{% include "components/footer.njk" %}
-
-		{# This script tag is new. It will load and run our solar system animation. #}
-		{# NOTE: The script itself has a check so it only runs if it finds the canvas on the homepage. #}
-    {# If your theme inlines JS in the head, you can remove this and use the head.njk method instead. #}
-		<script src="/js/solar-system.js"></script>
 
 	</body>
 
