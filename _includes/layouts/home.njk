@@ -2,12 +2,15 @@
 layout: layouts/base.njk
 section: home
 ---
+{# This canvas element is the stage for our solar system animation. #}
+{# It's placed at the top so it sits behind all other content. #}
+<canvas id="solar-system-canvas"></canvas>
 
 {# =================================================================== #}
 {# HERO SECTION - The first thing visitors see. #}
 {# =================================================================== #}
 <section class="hero-section">
-  <div class="aurora-glow"></div>
+  <div class="aurora-glow"></div> {# This is the nebula glow effect #}
   <div class="hero-content">
     <h1 class="hero-headline">The Future of [Your Product] is Here</h1>
     <p class="hero-subheadline">Experience unparalleled performance and next-generation features, built on a decentralized, secure, and blazingly fast architecture.</p>
@@ -27,14 +30,19 @@ section: home
     <div class="featured-grid">
       {%- for page in collections.all %}
         {%- if page.data.featured == true %}
-          <a href="{{ page.url }}" class="feature-card">
+          {# Each card is a link to the page #}
+          <a href="{{ page.url | url }}" class="feature-card">
+            {# The card-content div is now essential for the glowing border effect #}
             <div class="card-content">
               <h3>{{ page.data.title }}</h3>
               {%- if page.data.summary %}
                 <p>{{ page.data.summary }}</p>
               {% endif %}
+              {# This new card-footer provides a clear call to action #}
+              <div class="card-footer">
+                Learn More &rarr;
+              </div>
             </div>
-            <div class="card-arrow">&rarr;</div>
           </a>
         {%- endif %}
       {%- endfor %}
