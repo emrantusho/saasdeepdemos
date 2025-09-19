@@ -4,13 +4,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title or metadata.title }}</title>
   <meta name="description" content="{{ metaDescription or eleventyComputed.metaDescription or metadata.description }}">
+
+  {# This block takes your single CSS file, minifies it, and places it directly here for speed. #}
   {% set css %}
     {% include "assets/css/inline.css" %}
   {% endset %}
   <style>{{ css | cssmin | safe }}</style>
-  {# Uncomment below if you want to include minified inline JavaScript #}
-  {# {% set js %}
-    {% include "assets/js/inline.js" %}
-  {% endset %}
-  <script>{{ js | jsmin | safe }}</script> #}
+
+  {# This block is new. It checks if the current page is the homepage. #}
+  {# If it is, it includes and minifies the solar system JavaScript. #}
+  {# This ensures the animation script only loads on the page where it's needed. #}
+  {% if section == "home" %}
+    {% set js %}
+      {% include "assets/js/solar-system.js" %}
+    {% endset %}
+    <script>{{ js | jsmin | safe }}</script>
+  {% endif %}
 </head>
