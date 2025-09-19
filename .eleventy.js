@@ -29,6 +29,17 @@ module.exports = function(eleventyConfig) {
       if (!author) {
         return coll;
       }
+
+
+
+eleventyConfig.addCollection("demo", function(collectionApi) {
+  return collectionApi.getFilteredByTag("demo");
+});
+
+
+
+
+      
       if (!coll.hasOwnProperty(author)) {
         coll[author] = [];
       }
