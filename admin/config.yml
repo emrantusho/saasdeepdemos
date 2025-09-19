@@ -1,15 +1,26 @@
+# ===================================================================
+# Backend Configuration
+# This tells the CMS how to connect to your GitHub repository.
+# ===================================================================
 backend:
   name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
+  # IMPORTANT: Replace "main" below with your actual default branch
+  # name you found in Part A (it's probably "main" or "master").
+  branch: main
 
-# This line should be uncommented and pointed to your media folder
+# ===================================================================
+# Media and Public Folder Configuration
+# This tells the CMS where to save uploaded images.
+# ===================================================================
 media_folder: "src/images/uploads"
-
-# This line should be uncommented and pointed to your media folder
 public_folder: "/images/uploads"
 
+# ===================================================================
+# Collections Configuration
+# This defines the content types for your site (Posts and Pages).
+# ===================================================================
 collections:
-  # This is the original collection for blog posts
+  # Collection for Blog Posts
   - name: "posts"
     label: "Posts"
     folder: "src/posts"
@@ -22,7 +33,7 @@ collections:
       - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk"}
       - {label: "Body", name: "body", widget: "markdown"}
 
-  # This is the new collection you are adding for static pages
+  # Collection for Static Pages (About, Contact, etc.)
   - name: "pages"
     label: "Pages"
     folder: "src/pages"
