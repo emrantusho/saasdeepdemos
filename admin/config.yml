@@ -1,30 +1,36 @@
 # ===================================================================
-# Backend Configuration
-# This tells the CMS how to connect to your GitHub repository.
+# Backend Configuration (Required)
+# Connects to your GitHub repository.
 # ===================================================================
 backend:
   name: git-gateway
-  # IMPORTANT: Make sure this matches your repository's default branch.
-  # It is almost always "main" or "master".
+  # IMPORTANT: Double-check that this matches your repository's default branch.
+  # Change to "master" if that is what your repository uses.
   branch: main
 
 # ===================================================================
-# Media Folder Configuration
-# This tells the CMS where to save any images you upload.
+# Media and Publishing Configuration (Required by the CMS)
+# This tells the CMS how to handle image uploads.
 # ===================================================================
-media_folder: "static/img" # Or "public/img", check your project structure.
-public_folder: "/img"
+media_folder: "static/img/uploads" # Tells the CMS where to save images.
+public_folder: "/img/uploads"      # Tells the CMS how to display them.
+
+# This new section is required to fix the error.
+media_library:
+  name: uploadcare
+  config:
+    publicKey: demopublickey # Replace with your own key for a real site.
 
 # ===================================================================
-# Collections Configuration
-# This defines the content types for your site. We only need one: "Demos".
+# Collections Configuration (Required)
+# This defines your content types.
 # ===================================================================
 collections:
-  # This is the only collection you need for your demo portfolio.
+  # The only collection you need for your demo portfolio.
   - name: "demos"
     label: "Demos"
     label_singular: "Demo"
-    folder: "demos" # This will save each new demo in a folder named "demos".
+    folder: "demos" # Saves new demos in a root folder named "demos".
     create: true
     slug: "{{slug}}"
     fields:
@@ -32,7 +38,6 @@ collections:
       - {label: "Script URL", name: "scriptUrl", widget: "string", hint: "The full URL to the live demo you want to embed (e.g., https://my-app.netlify.app/)."}
       - {label: "Summary", name: "summary", widget: "text", required: false, hint: "(Optional) A short, one-sentence description of the project."}
       
-      # These fields are hidden. They automatically add the necessary data
-      # to each file without you needing to do anything.
+      # These fields are hidden. They automatically add the necessary data.
       - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/demo.njk"}
       - {label: "Tags", name: "tags", widget: "hidden", default: ["demo"]}
