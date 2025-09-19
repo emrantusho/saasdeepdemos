@@ -1,7 +1,6 @@
 (function() {
   const canvas = document.getElementById('solar-system-canvas');
   // This is a crucial check. The script will only run if it finds the canvas element.
-  // This prevents errors on other pages where the canvas doesn't exist.
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let width, height;
@@ -10,10 +9,10 @@
 
     const sun = { x: 0, y: 0, radius: 25, color: 'rgba(255, 220, 100, 1)' };
     const planets = [
-      { radius: 4, distance: 70, speed: 0.01, angle: Math.random() * 2 * Math.PI, color: '#A9A9A9' }, // Mercury-like
-      { radius: 8, distance: 120, speed: 0.005, angle: Math.random() * 2 * Math.PI, color: '#4682B4' }, // Earth-like
-      { radius: 6, distance: 180, speed: 0.003, angle: Math.random() * 2 * Math.PI, color: '#B22222' }, // Mars-like
-      { radius: 12, distance: 260, speed: 0.0015, angle: Math.random() * 2 * Math.PI, color: '#DEB887' }, // Jupiter-like
+      { radius: 4, distance: 70, speed: 0.01, angle: Math.random() * 2 * Math.PI, color: '#A9A9A9' },
+      { radius: 8, distance: 120, speed: 0.005, angle: Math.random() * 2 * Math.PI, color: '#4682B4' },
+      { radius: 6, distance: 180, speed: 0.003, angle: Math.random() * 2 * Math.PI, color: '#B22222' },
+      { radius: 12, distance: 260, speed: 0.0015, angle: Math.random() * 2 * Math.PI, color: '#DEB887' },
     ];
 
     function resize() {
